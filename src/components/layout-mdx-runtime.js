@@ -4,11 +4,18 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { MDXProvider } from '@mdx-js/tag'
 
 import Header from './header'
+import Foo from './foo'
 
 export default ({ data }) => (
-  <MDXProvider components={{}}>
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+  <MDXProvider
+    components={{
+      foo: Foo,
+    }}
+  >
+    <>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+    </>
   </MDXProvider>
 )
 
